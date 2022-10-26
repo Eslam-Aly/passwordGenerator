@@ -7,23 +7,35 @@ const characters = ["A","B","C","D","E","F","G","H","I","J","K","L","M",
 
 let passOneEl = document.getElementById("pass-one")
 let passTwoEl = document.getElementById("pass-two")
+
 let randomPassOne = ""
 let randomPassTwo = ""
+let genrated = false
 
 function getRandomPassOne() {
     for (let i = 0; i < 16; i ++) {
-        randomPassOne +=  characters[Math.floor(Math.random() * characters.length)]
+         randomPassOne +=  characters[Math.floor(Math.random() * characters.length)]
     }
-    return randomPassOne
+    passOneEl.textContent = randomPassOne
 }
+
+
 function getRandomPassTwo() {
     for (let i = 0; i < 16; i ++) {
         randomPassTwo +=  characters[Math.floor(Math.random() * characters.length)]
     }
-    return randomPassTwo
-}
-function generatePassword() {
-    passOneEl.textContent = getRandomPassOne()
-    passTwoEl.textContent = getRandomPassTwo()
+    passTwoEl.textContent = randomPassTwo
 }
 
+
+function generateRendomPass(){
+    genrated = true 
+    getRandomPassOne()
+    getRandomPassTwo()
+}
+
+function startGenerator() {
+    if (genrated === false) {
+        generateRendomPass()
+    }
+}
